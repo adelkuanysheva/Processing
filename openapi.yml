@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  description: This API provides event stats
+  version: "1.0.0"
+  title: Stats API
+  contact:
+    email: akuanysheva@my.bcit.ca
+paths:
+  /stats:
+    get:
+      summary: Gets the event stats
+      operationId: app.get_stats
+      description: Gets ride and heartrate processsed statistics
+      responses:
+        '200':
+          description: Successfully returned a list of events
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/stats'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /health:
+    get:
+      summary: health check on the service
+      operationId: app.health
+      description: health check on the service
+      responses:
+        "200":
+          description: service is running
+          
+components:
+  schemas:
+    stats:
+      required:
+      - id
+      - num_ride_readings
+      - max_speed_reading
+      - num_heartrate_readings
+      - max_heartrate_reading
+      properties:
+        id:
+          type: integer
+          example: 1
+        num_ride_readings:
+          type: integer
+          example: 500000
+        max_ride_reading:
+          type: integer
+          example: 40
+        num_heartrate_readings:
+          type: integer
+          example: 200000
+        max_heartrate_reading:
+          type: integer
+          example: 200
+      type: object
