@@ -98,7 +98,6 @@ def populate_stats():
     
     logger.info('Number of ride data events received: ' + ride_oldlenstr)
     logger.debug(ride_data)  
-    logger.info('TEST FOR ACIT4850')
     # Heartrate GET request
     req_heartrate = requests.get(app_config['eventstore2']['url'] + '?start_timestamp=' + last_updated + "&end_timestamp=" + current_time_str, 
                                     headers={'Content-Type': 'application/json'})
@@ -142,6 +141,7 @@ def get_stats():
     """ Receives statistics data event"""
     
     session = DB_SESSION()
+    logger.info('TEST FOR ACIT4850')
     logger.info('Statistics request started.')
     
     results = session.query(Stats).order_by(Stats.last_updated.desc())
