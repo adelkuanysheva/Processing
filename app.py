@@ -141,7 +141,7 @@ def get_stats():
     """ Receives statistics data event"""
     
     session = DB_SESSION()
-    logger.info('TEST FOR ACIT4850')
+    logger.info('')
     logger.info('Statistics request started.')
     
     results = session.query(Stats).order_by(Stats.last_updated.desc())
