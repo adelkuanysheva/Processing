@@ -98,7 +98,7 @@ def populate_stats():
     
     logger.info('Number of ride data events received: ' + ride_oldlenstr)
     logger.debug(ride_data)  
-
+    logger.info('TEST')
     # Heartrate GET request
     req_heartrate = requests.get(app_config['eventstore2']['url'] + '?start_timestamp=' + last_updated + "&end_timestamp=" + current_time_str, 
                                     headers={'Content-Type': 'application/json'})
